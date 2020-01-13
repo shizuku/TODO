@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">待办事项</string>
+    <string name="action_settings">设置</string>
+    <string name="large_text_about">
+        此应用开源并遵循MIT开源协议。\\n\\n如果遇到任何问题请访问本应用的github仓库或者发邮件给我。
+    </string>
+    <string name="title_activity_about">关于</string>
+    <string name="title_done">已办</string>
+    <string name="title_info">关于</string>
+    <string name="title_today">今日</string>
+    <string name="title_todo">待办</string>
+    <string name="action_ok">确定</string>
+    <string name="title_activity_add">添加</string>
+    <string name="action_swap_order">排序</string>
+    <string name="hint_add_title">标题</string>
+    <string name="hint_add_describe">描述</string>
+    <string name="hint_add_priority_0">重要</string>
+    <string name="hint_add_priority_1">中等</string>
+    <string name="hint_add_priority_2">不重要</string>
+    <string name="hint_add_date_choose">选择日期</string>
+    <string name="hint_add_time_choose">选择时间</string>
+    <string name="msg_add_title_empty">标题不能为空</string>
+    <string name="title_settings">设置</string>
+    <string name="title_feedback">反馈</string>
+    <string name="title_rate">评分</string>
+    <string name="title_help">帮助</string>
+    <string name="developing">开发中</string>
+    <string name="title_activity_help">帮助</string>
+    <string name="large_text_help">
+        1. 主界面上的双箭头按钮的功能是，切换以重要性排序和以时间排序，默认情况下以时间排序。
+    </string>
+</resources>
