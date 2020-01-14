@@ -1,26 +1,31 @@
 package com.shizuku.tools.todo.data
 
-import java.text.DateFormat
-
 import java.util.*
 
 class DateTime {
     var cal: Calendar = Calendar.getInstance()
 
+    constructor()
     constructor(millis: Long) {
         cal.timeInMillis = millis
     }
-
-    constructor()
 
     fun num(): Long {
         return cal.timeInMillis
     }
 
     fun dateString(): String {
-        val date = cal.time
-        val f = DateFormat.getDateInstance()
-        return f.format(date)
+        return when (num()) {
+            in thisYearStart()..thisYearEnd() -> {
+                (cal.get(Calendar.MONTH) + 1).toString() + "-" +
+                        cal.get(Calendar.DAY_OF_MONTH).toString()
+            }
+            else -> {
+                cal.get(Calendar.YEAR).toString() + "-" +
+                        (cal.get(Calendar.MONTH) + 1).toString() + "-" +
+                        cal.get(Calendar.DAY_OF_MONTH).toString()
+            }
+        }
     }
 
     fun timeString(): String {
@@ -32,7 +37,10 @@ class DateTime {
     }
 
     fun string(): String {
-        return dateString() + " " + timeString()
+        return when (num()) {
+            in todayStart()..todayEnd() -> timeString()
+            else -> dateString()
+        }
     }
 
     fun set(year: Int, month: Int, day: Int) {
@@ -77,9 +85,34 @@ class DateTime {
             return c.timeInMillis
         }
 
+        fun thisYearStart(): Long {
+            val c: Calendar = Calendar.getInstance()
+            c.set(
+                c.get(Calendar.YEAR),
+                0,
+                1,
+                0,
+                0,
+                0
+            )
+            return c.timeInMillis
+        }
+
+        fun thisYearEnd(): Long {
+            val c: Calendar = Calendar.getInstance()
+            c.set(
+                c.get(Calendar.YEAR),
+                11,
+                31,
+                0,
+                0,
+                0
+            )
+            return c.timeInMillis
+        }
+
         fun current(): Long {
             val c: Calendar = Calendar.getInstance()
-
             return c.timeInMillis
         }
     }

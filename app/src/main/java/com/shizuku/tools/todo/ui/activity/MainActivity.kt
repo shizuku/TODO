@@ -56,8 +56,7 @@ class MainActivity : AppCompatActivity() {
         val sharePreference = getSharedPreferences("FirstRun", 0)
         val firstRun = sharePreference.getBoolean("First", true)
         if (firstRun) {
-            op.createDone()
-            op.createTodo()
+            op.create()
             sharePreference.edit().putBoolean("First", false).apply()
             return
         } else {
@@ -73,7 +72,6 @@ class MainActivity : AppCompatActivity() {
 
         op = LogDBOperator(this)
         firstRun()
-        op.sync()
 
         mDrawerLayout = findViewById(R.id.drawer_layout)
         val navView: NavigationView = findViewById(R.id.nav_view)

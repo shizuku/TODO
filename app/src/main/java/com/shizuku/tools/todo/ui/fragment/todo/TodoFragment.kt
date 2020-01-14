@@ -65,7 +65,7 @@ class TodoFragment : Fragment() {
             list.clear()
             list.addAll(it)
             sort()
-            adapter.notifyItemChanged(0, list.size)
+            adapter.notifyDataSetChanged()
         })
 
         swipeRefresh = root.findViewById(R.id.swipe_refresh)

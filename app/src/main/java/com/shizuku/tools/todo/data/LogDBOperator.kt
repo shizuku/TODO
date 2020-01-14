@@ -10,34 +10,72 @@ class LogDBOperator(var context: Context) {
     private var db: SQLiteDatabase = dbHelper.writableDatabase
 
     fun sync() {
-        val dayStart = DateTime.todayStart()
-        val c =
-            db.rawQuery("select * from todo where deadline < $dayStart", null)
+        val time = DateTime.current()
+        val c = db.rawQuery("select * from todo where finished=0 and deadline<$time", null)
         if (c.moveToFirst()) {
             do {
-                insertDone(
+                update(
                     Log(
                         c.getInt(c.getColumnIndex("id")),
                         c.getString(c.getColumnIndex("title")),
                         c.getString(c.getColumnIndex("describe")),
                         c.getLong(c.getColumnIndex("deadline")),
-                        c.getInt(c.getColumnIndex("priority"))
+                        c.getInt(c.getColumnIndex("priority")),
+                        1
                     )
                 )
-                deleteTodo(c.getInt(c.getColumnIndex("id")))
             } while (c.moveToNext())
         }
         c.close()
     }
 
-    fun getAllTodo() = getAll("todo")
-    fun getAllDone() = getAll("done")
+    fun getAllTodo(): ArrayList<Log> {
+        val r = arrayListOf<Log>()
+        val c = db.rawQuery("select * from todo where finished=0", null)
+        if (c.moveToFirst()) {
+            do {
+                r.add(
+                    Log(
+                        c.getInt(c.getColumnIndex("id")),
+                        c.getString(c.getColumnIndex("title")),
+                        c.getString(c.getColumnIndex("describe")),
+                        c.getLong(c.getColumnIndex("deadline")),
+                        c.getInt(c.getColumnIndex("priority")),
+                        c.getInt(c.getColumnIndex("finished"))
+                    )
+                )
+            } while (c.moveToNext())
+        }
+        c.close()
+        return r
+    }
+
+    fun getAllDone(): ArrayList<Log> {
+        val r = arrayListOf<Log>()
+        val c = db.rawQuery("select * from todo where finished=1", null)
+        if (c.moveToFirst()) {
+            do {
+                r.add(
+                    Log(
+                        c.getInt(c.getColumnIndex("id")),
+                        c.getString(c.getColumnIndex("title")),
+                        c.getString(c.getColumnIndex("describe")),
+                        c.getLong(c.getColumnIndex("deadline")),
+                        c.getInt(c.getColumnIndex("priority")),
+                        c.getInt(c.getColumnIndex("finished"))
+                    )
+                )
+            } while (c.moveToNext())
+        }
+        c.close()
+        return r
+    }
+
     fun getAllToday(): ArrayList<Log> {
         val r = arrayListOf<Log>()
-        val dayStart = DateTime.todayStart()
-        val dayEnd = DateTime.todayEnd()
-        val c =
-            db.rawQuery("select * from todo where deadline>$dayStart and deadline<$dayEnd", null)
+        val start = DateTime.todayStart()
+        val end = DateTime.todayEnd()
+        val c = db.rawQuery("select * from todo where deadline>$start and deadline<$end", null)
         if (c.moveToFirst()) {
             do {
                 r.add(
@@ -46,7 +84,8 @@ class LogDBOperator(var context: Context) {
                         c.getString(c.getColumnIndex("title")),
                         c.getString(c.getColumnIndex("describe")),
                         c.getLong(c.getColumnIndex("deadline")),
-                        c.getInt(c.getColumnIndex("priority"))
+                        c.getInt(c.getColumnIndex("priority")),
+                        c.getInt(c.getColumnIndex("finished"))
                     )
                 )
             } while (c.moveToNext())
@@ -55,75 +94,67 @@ class LogDBOperator(var context: Context) {
         return r
     }
 
-    fun createTodo() = create("todo")
-    fun createDone() = create("done")
-    fun insertTodo(i: Log) = insert("todo", i)
-    fun insertDone(i: Log) = insert("done", i)
-    fun updateTodo(j: Log) = update("todo", j)
-    fun updateDone(j: Log) = update("done", j)
-    fun deleteTodo(i: Int) = delete("todo", i)
-    fun deleteDone(i: Int) = delete("done", i)
-
-    private fun getAll(name: String): ArrayList<Log> {
-        val r = arrayListOf<Log>()
-        val c = db.rawQuery("select * from $name", null)
+    fun query(id: Int): Log {
+        val r: Log
+        val c = db.rawQuery("select * from todo where id=$id", null)
         if (c.moveToFirst()) {
-            do {
-                r.add(
-                    Log(
-                        c.getInt(c.getColumnIndex("id")),
-                        c.getString(c.getColumnIndex("title")),
-                        c.getString(c.getColumnIndex("describe")),
-                        c.getLong(c.getColumnIndex("deadline")),
-                        c.getInt(c.getColumnIndex("priority"))
-                    )
-                )
-            } while (c.moveToNext())
+            r = Log(
+                c.getInt(c.getColumnIndex("id")),
+                c.getString(c.getColumnIndex("title")),
+                c.getString(c.getColumnIndex("describe")),
+                c.getLong(c.getColumnIndex("deadline")),
+                c.getInt(c.getColumnIndex("priority")),
+                c.getInt(c.getColumnIndex("finished"))
+            )
+        } else {
+            r = Log(0, "", "", 0, 0, 0)
         }
         c.close()
         return r
     }
 
-    private fun create(name: String) {
+    fun create() {
         try {
             db.execSQL(
-                "create table $name(id integer primary key autoincrement,title text,describe text,deadline int,priority int);"
+                "create table todo (id integer primary key autoincrement,title text,describe text,deadline int,priority int,finished int);"
             )
         } catch (e: Exception) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun insert(name: String, item: Log) {
+    fun insert(item: Log) {
         try {
             val title = item.title
             val describe = item.describe
             val deadline = item.deadline
             val priority = item.priority
+            val finished = item.finished
             db.execSQL(
-                "insert into $name ( title, describe, deadline, priority)values( \"$title\", \"$describe\", $deadline, $priority);"
+                "insert into todo ( title, describe, deadline, priority, finished)values( \"$title\", \"$describe\", $deadline, $priority, $finished);"
             )
         } catch (e: Exception) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun update(name: String, item: Log) {
+    fun update(item: Log) {
         try {
             val id = item.id
             val title = item.title
             val describe = item.describe
             val deadline = item.deadline
             val priority = item.priority
-            db.execSQL("update $name set title=\"$title\",describe=\"$describe\",deadline=$deadline,priority=$priority where id=$id;")
+            val finished = item.finished
+            db.execSQL("update todo set title=\"$title\",describe=\"$describe\",deadline=$deadline,priority=$priority ,finished=$finished where id=$id;")
         } catch (e: Exception) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show()
         }
     }
 
-    private fun delete(name: String, id: Int) {
+    fun delete(id: Int) {
         try {
-            db.execSQL("delete from $name where id=$id")
+            db.execSQL("delete from todo where id=$id")
         } catch (e: Exception) {
             Toast.makeText(context, e.toString(), Toast.LENGTH_LONG).show()
         }

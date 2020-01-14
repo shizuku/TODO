@@ -34,7 +34,8 @@
     <string name="developing">This app is not uploaded</string>
     <string name="title_activity_help">Help</string>
     <string name="large_text_help">
-        "1. The function of up-down arrow button in the main view is to swap the order of time and importance. It is sorted by time in default."
+        "1. The function of up-down arrow button in the main view is to swap the order of time and importance. It is sorted by time in default.\n\n"
+        "2. This APP does not request any extra permission，and does not connect the Internet. If you need back up data，please operate\"/sdcard/Android/data/com.shizuku.tools.todo/files/data.db\" directly.\n\n"
     </string>
     <string name="title_activity_settings">Settings</string>
 
@@ -67,4 +68,12 @@
 
     </string>
     <string name="hint_add_deadline">Deadline</string>
+    <string name="title_activity_view">Edit</string>
+    <string name="action_delete">Delete</string>
+    <string name="dialog_warning_title">Delete</string>
+    <string name="dialog_warning_msg">Are you sure to delete?</string>
+    <string name="dialog_warning_button_pos">OK</string>
+    <string name="dialog_warning_button_neg">Cancel</string>
+    <string name="dialog_finish_title">Finish</string>
+    <string name="dialog_finish_msg">Are you sure to finish this task in advance?</string>
 </resources>

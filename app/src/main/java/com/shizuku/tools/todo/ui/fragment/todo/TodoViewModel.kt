@@ -13,6 +13,7 @@ class TodoViewModel : ViewModel() {
     }
 
     fun update() {
+        op.sync()
         list.value = op.getAllTodo()
     }
 }

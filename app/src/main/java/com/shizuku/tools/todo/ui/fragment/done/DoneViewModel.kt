@@ -13,6 +13,7 @@ class DoneViewModel : ViewModel() {
     }
 
     fun update() {
+        op.sync()
         list.value = op.getAllDone()
     }
 }

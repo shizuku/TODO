@@ -5,5 +5,6 @@ data class Log(
     var title: String,
     var describe: String,
     var deadline: Long,
-    var priority: Int
+    var priority: Int,
+    var finished: Int
 )
