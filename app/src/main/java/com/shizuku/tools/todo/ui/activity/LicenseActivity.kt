@@ -1,28 +1,25 @@
 package com.shizuku.tools.todo.ui.activity
 
-import android.content.Intent
-import android.net.Uri
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.appcompat.app.ActionBar
+import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.shizuku.tools.todo.R
-import kotlinx.android.synthetic.main.activity_help.*
+import kotlinx.android.synthetic.main.activity_license.*
 
-class HelpActivity : AppCompatActivity() {
+class LicenseActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_help)
+        setContentView(R.layout.activity_license)
         setSupportActionBar(toolbar)
 
-        val actionBar: ActionBar? = supportActionBar
-        actionBar?.setDisplayHomeAsUpEnabled(true)
-        actionBar?.setHomeAsUpIndicator(R.drawable.ic_menu_back_white_24dp)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu_back_white_24dp)
 
-        fab.setOnClickListener {
-            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/shizuku"))
-            startActivity(i)
+        fab.setOnClickListener { view ->
+            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+                .setAction("Action", null).show()
         }
     }
 

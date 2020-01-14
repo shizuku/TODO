@@ -109,7 +109,8 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.nav_settings -> {
-                    Toast.makeText(this, getString(R.string.developing), Toast.LENGTH_LONG).show()
+                    val i = Intent(this@MainActivity, SettingsActivity::class.java)
+                    startActivity(i)
                     mDrawerLayout.closeDrawers()
                     true
                 }
