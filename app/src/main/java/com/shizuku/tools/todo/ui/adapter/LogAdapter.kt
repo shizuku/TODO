@@ -8,14 +8,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.shizuku.tools.todo.R
-import com.shizuku.tools.todo.Todo
 import com.shizuku.tools.todo.data.DateTime
 import com.shizuku.tools.todo.data.Log
 import com.shizuku.tools.todo.data.LogDBOperator
+import com.shizuku.tools.todo.todo
 import com.shizuku.tools.todo.ui.activity.ViewActivity
 
 class LogAdapter(private var mDataSet: ArrayList<Log>) :
@@ -64,7 +63,7 @@ class LogAdapter(private var mDataSet: ArrayList<Log>) :
                     .setPositiveButton(
                         R.string.dialog_warning_button_pos,
                         DialogInterface.OnClickListener { _, _ ->
-                            val op = LogDBOperator(Todo.context)
+                            val op = LogDBOperator(todo.context)
                             op.update(
                                 Log(
                                     log.id,

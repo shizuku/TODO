@@ -13,7 +13,7 @@
     <string name="title_today">今日</string>
     <string name="title_todo">待办</string>
     <string name="action_ok">确定</string>
-    <string name="title_activity_add">添加</string>
+    <string name="title_activity_add">添加计划</string>
     <string name="action_swap_order">排序</string>
     <string name="hint_add_title">标题</string>
     <string name="hint_add_describe">描述</string>
@@ -46,4 +46,5 @@
     <string name="title_activity_view">编辑</string>
     <string name="dialog_finish_title">完成</string>
     <string name="dialog_finish_msg">确定提前完成此任务吗？</string>
+    <string name="empty_msg">没有计划</string>
 </resources>

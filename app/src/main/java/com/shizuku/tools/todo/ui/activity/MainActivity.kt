@@ -3,13 +3,6 @@ package com.shizuku.tools.todo.ui.activity
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import com.google.android.material.floatingactionbutton.FloatingActionButton
-import com.google.android.material.snackbar.Snackbar
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 import androidx.appcompat.app.AppCompatActivity
@@ -21,9 +14,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.shizuku.tools.todo.R
-import com.shizuku.tools.todo.Todo
 import com.shizuku.tools.todo.data.LogDBOperator
 import com.shizuku.tools.todo.ui.fragment.done.DoneFragment
 import com.shizuku.tools.todo.ui.fragment.today.TodayFragment

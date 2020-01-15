@@ -12,17 +12,17 @@ import androidx.appcompat.app.ActionBar
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.shizuku.tools.todo.R
-import com.shizuku.tools.todo.Todo
 import com.shizuku.tools.todo.data.DateTime
 import com.shizuku.tools.todo.data.Log
 import com.shizuku.tools.todo.data.LogDBOperator
+import com.shizuku.tools.todo.todo
 
 import kotlinx.android.synthetic.main.activity_view.*
 import java.util.*
 
 class ViewActivity : AppCompatActivity() {
     private lateinit var log: Log
-    private val op = LogDBOperator(Todo.context)
+    private val op = LogDBOperator(todo.context)
     private lateinit var radioGroup: RadioGroup
     private lateinit var radioButton0: RadioButton
     private lateinit var radioButton1: RadioButton

@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -18,6 +19,7 @@ class TodayFragment : Fragment() {
     private lateinit var viewModel: TodayViewModel
     private var list: ArrayList<Log> = ArrayList()
     private lateinit var recycler: RecyclerView
+    private lateinit var empty: LinearLayout
     private lateinit var adapter: LogAdapter
     private lateinit var swipeRefresh: SwipeRefreshLayout
     private var sorter: Int? = 0
@@ -55,6 +57,7 @@ class TodayFragment : Fragment() {
             ViewModelProviders.of(this).get(TodayViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_today, container, false)
 
+        empty = root.findViewById(R.id.empty_layout)
         recycler = root.findViewById(R.id.frag_recycler)
         recycler.layoutManager =
             LinearLayoutManager(this.activity, LinearLayoutManager.VERTICAL, false)
@@ -64,7 +67,14 @@ class TodayFragment : Fragment() {
         viewModel.list.observe(this, Observer {
             list.clear()
             list.addAll(it)
-            sort()
+            if (list.isEmpty()) {
+                recycler.visibility = View.INVISIBLE
+                empty.visibility = View.VISIBLE
+            } else {
+                sort()
+                recycler.visibility = View.VISIBLE
+                empty.visibility = View.INVISIBLE
+            }
             adapter.notifyDataSetChanged()
         })
 

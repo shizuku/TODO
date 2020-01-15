@@ -15,7 +15,7 @@
         "Any questions please visit the github repository of this APP or mail to me.\n\n"
         "GitHub: https://github.com/shizuku \n\n"
     </string>
-    <string name="title_activity_add">Add</string>
+    <string name="title_activity_add">Add plan</string>
     <string name="action_ok">OK</string>
     <string name="action_swap_order">Order</string>
     <string name="hint_add_title">Title</string>
@@ -76,4 +76,5 @@
     <string name="dialog_warning_button_neg">Cancel</string>
     <string name="dialog_finish_title">Finish</string>
     <string name="dialog_finish_msg">Are you sure to finish this task in advance?</string>
+    <string name="empty_msg">No plan</string>
 </resources>
