@@ -1,12 +1,6 @@
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/settings_common_header">
-
-        <Preference
-            app:icon="@drawable/ic_menu_help_black_24dp"
-            app:key="license"
-            app:summary="@string/settings_summary_license"
-            app:title="@string/settings_title_license" />
+    <PreferenceCategory app:title="@string/settings_message_header">
 
     </PreferenceCategory>
 

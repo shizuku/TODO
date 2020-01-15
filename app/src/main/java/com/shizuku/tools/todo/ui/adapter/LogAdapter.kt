@@ -49,39 +49,47 @@ class LogAdapter(private var mDataSet: ArrayList<Log>) :
             i.putExtra("id", log.id)
             it.context.startActivity(i)
         }
+        holder.v.setOnLongClickListener {
+            onFinished(it, holder)
+            true
+        }
         holder.imgMain.setOnClickListener {
-            val position = holder.adapterPosition
-            val log = mDataSet[position]
-            if (log.finished == 0) {
-                val dialog = AlertDialog.Builder(it.context)
-                dialog.setOnCancelListener { }
-                dialog.setOnDismissListener { }
-                dialog.setIcon(R.drawable.ic_dialog_ask_24dp)
-                    .setTitle(R.string.dialog_finish_title)
-                    .setMessage(R.string.dialog_finish_msg)
-                    .setCancelable(true)
-                    .setPositiveButton(
-                        R.string.dialog_warning_button_pos,
-                        DialogInterface.OnClickListener { _, _ ->
-                            val op = LogDBOperator(todo.context)
-                            op.update(
-                                Log(
-                                    log.id,
-                                    log.title,
-                                    log.describe,
-                                    log.deadline,
-                                    log.priority,
-                                    1
-                                )
-                            )
-                        }
-                    ).setNegativeButton(
-                        R.string.dialog_warning_button_neg,
-                        DialogInterface.OnClickListener { _, _ -> })
-                dialog.show()
-            }
+            onFinished(it, holder)
         }
         return holder
+    }
+
+    private fun onFinished(it: View, holder: ViewHolder) {
+        val position = holder.adapterPosition
+        val log = mDataSet[position]
+        if (log.finished == 0) {
+            val dialog = AlertDialog.Builder(it.context)
+            dialog.setOnCancelListener { }
+            dialog.setOnDismissListener { }
+            dialog.setIcon(R.drawable.ic_dialog_ask_24dp)
+                .setTitle(R.string.dialog_finish_title)
+                .setMessage(R.string.dialog_finish_msg)
+                .setCancelable(true)
+                .setPositiveButton(
+                    R.string.dialog_warning_button_pos,
+                    DialogInterface.OnClickListener { _, _ ->
+                        val op = LogDBOperator(todo.context)
+                        op.update(
+                            Log(
+                                log.id,
+                                log.title,
+                                log.describe,
+                                log.deadline,
+                                log.priority,
+                                1
+                            )
+                        )
+                    }
+                ).setNegativeButton(
+                    R.string.dialog_warning_button_neg,
+                    DialogInterface.OnClickListener { _, _ -> })
+            dialog.show()
+        }
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {

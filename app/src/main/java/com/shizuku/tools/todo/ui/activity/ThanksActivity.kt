@@ -5,13 +5,13 @@ import android.view.MenuItem
 import com.google.android.material.snackbar.Snackbar
 import androidx.appcompat.app.AppCompatActivity
 import com.shizuku.tools.todo.R
-import kotlinx.android.synthetic.main.activity_license.*
+import kotlinx.android.synthetic.main.activity_thanks.*
 
-class LicenseActivity : AppCompatActivity() {
+class ThanksActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_license)
+        setContentView(R.layout.activity_thanks)
         setSupportActionBar(toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_menu_back_white_24dp)

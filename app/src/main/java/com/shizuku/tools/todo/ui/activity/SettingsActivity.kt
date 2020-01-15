@@ -35,12 +35,12 @@ class SettingsActivity : AppCompatActivity() {
 
         override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
             super.onViewCreated(view, savedInstanceState)
-            val license = findPreference<Preference>("license")
+            /*val license = findPreference<Preference>("license")
             license?.setOnPreferenceClickListener {
                 val i = Intent(this.activity, LicenseActivity::class.java)
                 startActivity(i)
                 true
-            }
+            }*/
         }
     }
 
