@@ -21,7 +21,7 @@ class HelpActivity : AppCompatActivity() {
         actionBar?.setHomeAsUpIndicator(R.drawable.ic_menu_back_white_24dp)
 
         fab.setOnClickListener {
-            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/shizuku"))
+            val i = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/shizuku/TODO"))
             startActivity(i)
         }
     }
