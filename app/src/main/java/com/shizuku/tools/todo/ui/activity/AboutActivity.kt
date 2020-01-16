@@ -27,11 +27,12 @@ class AboutActivity : AppCompatActivity() {
             val i = Intent(this, LicenseActivity::class.java)
             startActivity(i)
         }
-        thanks = findViewById(R.id.text_thanks)
+        /*thanks = findViewById(R.id.text_thanks)
         thanks.setOnClickListener {
             val i = Intent(this, ThanksActivity::class.java)
             startActivity(i)
         }
+         */
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {

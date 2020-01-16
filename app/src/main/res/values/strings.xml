@@ -78,9 +78,23 @@
     <string name="about_license"><u>Open Source License</u></string>
     <string name="about_thanks"><u>Thanks</u></string>
     <string name="app_author">shizuku</string>
-    <string name="settings_message_header">Message</string>
     <string name="title_activity_thanks">Thanks</string>
     <string name="large_text_thanks">
         "Thanks: \n"
     </string>
+    <string name="channel_daily_id" translatable="false">channel_daily</string>
+    <string name="channel_daily_name">Daily report</string>
+    <string name="channel_daily_description">Report what you will do today</string>
+    <string name="settings_messages_header">Message</string>
+    <string name="settings_messages_title">Notification</string>
+    <string name="settings_messages_daily_title">Daily report</string>
+    <string name="settings_messages_daily_time_title">Daily report time</string>
+    <string name="settings_messages_daily_summary_on">Daily report is ON</string>
+    <string name="settings_messages_daily_summary_off">Daily report is OFF</string>
+    <string name="message_daily_title_start">You have</string>
+    <string name="message_daily_title_end">things to do</string>
+    <string name="message_daily_description">Press to show details</string>
+    <string name="app_version_num" translatable="false">1</string>
+    <string name="settings_messages_summary_on">Allow Notification</string>
+    <string name="settings_messages_summary_off">Ban Notification</string>
 </resources>

@@ -1,7 +1,48 @@
+<!--
+  ~ Copyright 2018 The app Open Source Project
+  ~
+  ~ Licensed under the Apache License, Version 2.0 (the "License");
+  ~ you may not use this file except in compliance with the License.
+  ~ You may obtain a copy of the License at
+  ~
+  ~      http://www.apache.org/licenses/LICENSE-2.0
+  ~
+  ~ Unless required by applicable law or agreed to in writing, software
+  ~ distributed under the License is distributed on an "AS IS" BASIS,
+  ~ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  ~ See the License for the specific language governing permissions and
+  ~ limitations under the License.
+  -->
+
 <PreferenceScreen xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory app:title="@string/settings_message_header">
+    <PreferenceCategory
+        app:icon="@drawable/ic_settings_messages"
+        app:title="@string/settings_messages_header">
 
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:icon="@drawable/ic_settings_allow_notif"
+            app:key="msg"
+            app:summaryOff="@string/settings_messages_summary_off"
+            app:summaryOn="@string/settings_messages_summary_on"
+            app:title="@string/settings_messages_title" />
+
+        <SwitchPreferenceCompat
+            app:defaultValue="true"
+            app:dependency="msg"
+            app:icon="@drawable/ic_settings_daily"
+            app:key="msg_daily"
+            app:summaryOff="@string/settings_messages_daily_summary_off"
+            app:summaryOn="@string/settings_messages_daily_summary_on"
+            app:title="@string/settings_messages_daily_title" />
+
+        <Preference
+            app:dependency="msg_daily"
+            app:icon="@drawable/ic_settings_daily_time"
+            app:key="msg_daily_time"
+            app:summary=""
+            app:title="@string/settings_messages_daily_time_title" />
     </PreferenceCategory>
 
 </PreferenceScreen>

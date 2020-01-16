@@ -10,10 +10,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <service
+            android:name=".service.MessageService"
+            android:enabled="true"
+            android:exported="true"></service>
+
         <activity
             android:name=".ui.activity.ThanksActivity"
             android:label="@string/title_activity_thanks"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".ui.activity.AboutActivity"
             android:label="@string/title_activity_about"

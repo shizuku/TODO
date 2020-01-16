@@ -48,9 +48,21 @@
     <string name="about_license"><u>开源协议</u></string>
     <string name="about_thanks"><u>致谢</u></string>
     <string name="app_author">零露瀼瀼</string>
-    <string name="settings_message_header">消息</string>
     <string name="large_text_thanks">
         "致谢：\n"
     </string>
     <string name="title_activity_thanks">致谢</string>
+    <string name="channel_daily_description">提醒您今天的待办事项</string>
+    <string name="channel_daily_name">每日提醒</string>
+    <string name="settings_messages_header">消息</string>
+    <string name="settings_messages_title">消息推送</string>
+    <string name="settings_messages_daily_title">每日提醒</string>
+    <string name="settings_messages_daily_time_title">每日提醒时间</string>
+    <string name="settings_messages_daily_summary_off">每日提醒已关闭</string>
+    <string name="settings_messages_daily_summary_on">每日提醒已开启</string>
+    <string name="message_daily_title_start">您有</string>
+    <string name="message_daily_title_end">件待办事项</string>
+    <string name="message_daily_description">点击查看详情</string>
+    <string name="settings_messages_summary_on">允许消息推送</string>
+    <string name="settings_messages_summary_off">禁用消息推送</string>
 </resources>

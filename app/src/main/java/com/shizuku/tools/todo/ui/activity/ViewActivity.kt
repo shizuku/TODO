@@ -107,7 +107,7 @@ class ViewActivity : AppCompatActivity() {
         }
         timeText.setOnClickListener {
             TimePickerDialog(
-                this, 4,
+                this, 0,
                 TimePickerDialog.OnTimeSetListener { _, hourOfDay, minute ->
                     dataTime.set(hourOfDay, minute)
                     timeText.text = dataTime.timeString()

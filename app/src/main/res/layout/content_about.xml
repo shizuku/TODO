@@ -45,13 +45,14 @@
             android:text="@string/about_license"
             android:textSize="@dimen/recycler_font_size_subtitle" />
 
-        <TextView
-            android:id="@+id/text_thanks"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/recycler_horizontal_margin"
-            android:autoLink="all"
-            android:text="@string/about_thanks"
-            android:textSize="@dimen/recycler_font_size_subtitle" />
+        <!--     <TextView
+                 android:id="@+id/text_thanks"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:layout_marginTop="@dimen/recycler_horizontal_margin"
+                 android:autoLink="all"
+                 android:text="@string/about_thanks"
+                 android:textSize="@dimen/recycler_font_size_subtitle" />
+     -->
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
